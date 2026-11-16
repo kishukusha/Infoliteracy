@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>セキュリティ警告</title>
+<meta name="theme-color" content="#f5f5f7">
+<title>寄宿舎 FREE Wi-Fi</title>
 
 <style>
 * {
@@ -13,87 +14,109 @@
 
 body {
   margin: 0;
-  padding: 15px;
+  padding: 24px 16px;
   min-height: 100vh;
-  font-family: "Yu Gothic", Meiryo, sans-serif;
-  background: #171717;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Yu Gothic", Meiryo, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
 }
 
 .container {
   width: 100%;
-  max-width: 520px;
-  background: #262626;
-  border: 2px solid #ef4444;
-  border-radius: 15px;
+  max-width: 460px;
+  background: rgba(255,255,255,.92);
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 0 30px #ef444466;
+  box-shadow: 0 12px 45px rgba(0,0,0,.08);
 }
 
-.top {
-  background: #991b1b;
-  padding: 25px 15px;
+.header {
   text-align: center;
+  padding: 35px 24px 25px;
+  background: #fff;
 }
 
-.warning-icon {
-  font-size: 65px;
-}
-
-.top h1 {
-  font-size: 30px;
-  margin: 10px 0;
+.wifi-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 16px;
+  border-radius: 23px;
+  background: #007aff;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 43px;
 }
 
-.top p {
+.header h1 {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -.7px;
+  margin: 0 0 8px;
+}
+
+.header p {
+  color: #86868b;
+  font-size: 14px;
   margin: 0;
-  font-size: 16px;
 }
 
 .content {
-  padding: 25px;
+  padding: 25px 24px 30px;
 }
 
-.alert {
-  color: #fca5a5;
-  font-size: 23px;
-  font-weight: bold;
+.warning-label {
+  color: #ff3b30;
+  font-size: 13px;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 
-.message {
-  background: #450a0a;
-  border: 1px solid #ef4444;
-  padding: 17px;
-  border-radius: 10px;
+.warning-title {
+  font-size: 29px;
+  font-weight: 750;
+  text-align: center;
+  line-height: 1.45;
+  letter-spacing: -.8px;
+  margin: 0 0 18px;
+}
+
+.warning-text {
+  color: #6e6e73;
+  font-size: 15px;
+  text-align: center;
   line-height: 1.8;
-  font-size: 17px;
+  margin-bottom: 25px;
 }
 
-.info {
-  margin-top: 20px;
-  background: #171717;
-  padding: 15px;
-  border-radius: 10px;
+.card {
+  background: #f5f5f7;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 22px;
 }
 
-.info-title {
-  color: #f87171;
-  font-weight: bold;
-  margin-bottom: 12px;
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #86868b;
+  margin-bottom: 10px;
 }
 
 .info-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  border-bottom: 1px solid #444;
-  padding: 10px 0;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e5ea;
   font-size: 14px;
 }
 
@@ -101,38 +124,42 @@ body {
   border-bottom: none;
 }
 
-.fake {
-  color: #fca5a5;
-  font-weight: bold;
+.status {
+  color: #ff3b30;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 button {
+  display: block;
   width: 100%;
-  padding: 17px;
-  margin-top: 18px;
   border: none;
-  border-radius: 10px;
-  background: #dc2626;
-  color: white;
-  font-size: 19px;
-  font-weight: bold;
+  border-radius: 14px;
+  padding: 17px;
+  font-size: 17px;
+  font-weight: 650;
   cursor: pointer;
+  transition: .2s;
 }
 
-button:hover {
-  background: #b91c1c;
+.primary {
+  background: #007aff;
+  color: white;
+}
+
+.primary:hover {
+  background: #0066d6;
+}
+
+.secondary {
+  background: #f5f5f7;
+  color: #007aff;
+  margin-top: 12px;
 }
 
 button:focus-visible {
-  outline: 4px solid #facc15;
+  outline: 4px solid #ffbf47;
   outline-offset: 3px;
-}
-
-.sub {
-  color: #aaa;
-  text-align: center;
-  font-size: 12px;
-  margin-top: 18px;
 }
 
 .hidden {
@@ -140,139 +167,188 @@ button:focus-visible {
 }
 
 .lesson {
-  background: white;
-  color: #222;
-  border-radius: 15px;
-  padding: 25px;
+  padding: 32px 25px;
+}
+
+.lesson-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e8f8ed;
+  color: #34c759;
+  font-size: 37px;
 }
 
 .lesson h2 {
-  color: #15803d;
   font-size: 25px;
   text-align: center;
+  line-height: 1.5;
+  margin: 0 0 22px;
+}
+
+.safe-card {
+  background: #e8f8ed;
+  border-radius: 16px;
+  padding: 18px;
+  color: #176b35;
+  line-height: 1.8;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.lesson h3 {
+  font-size: 17px;
+  margin: 24px 0 12px;
 }
 
 .lesson p,
 .lesson li {
+  color: #515154;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.lesson ul {
+  padding-left: 22px;
+}
+
+.lesson li {
+  margin-bottom: 9px;
+}
+
+.point {
+  background: #f5f5f7;
+  border-radius: 16px;
+  padding: 18px;
   line-height: 1.8;
+  font-size: 15px;
+  margin: 22px 0;
 }
 
-.safe {
-  background: #dcfce7;
-  border: 1px solid #86efac;
-  padding: 15px;
-  border-radius: 10px;
-  line-height: 1.8;
-}
-
-.lesson button {
-  background: #15803d;
-}
-
-footer {
+.footer {
   text-align: center;
-  color: #888;
-  font-size: 11px;
-  padding: 12px;
+  color: #aeaeb2;
+  font-size: 12px;
+  padding: 0 15px 20px;
+}
+
+@media (max-width: 380px) {
+  .warning-title {
+    font-size: 25px;
+  }
+  .header h1 {
+    font-size: 24px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- 警告画面 -->
 <div class="container" id="warning">
 
-  <div class="top">
-    <div class="warning-icon">⚠️</div>
-    <h1>警告！</h1>
-    <p>セキュリティに関する重要なお知らせ</p>
+  <div class="header">
+    <div class="wifi-icon">⌁</div>
+    <h1>寄宿舎 FREE Wi-Fi</h1>
+    <p>Wireless Network Service</p>
   </div>
 
   <div class="content">
 
-    <div class="alert">
+    <div class="warning-label">
+      SECURITY ALERT
+    </div>
+
+    <h2 class="warning-title">
       あなたの情報を<br>
-      取得しました！
-    </div>
+      取得しました。
+    </h2>
 
-    <div class="message">
-      このページにアクセスしたことで、
-      あなたの端末に関する情報が
-      取得された可能性があります。<br><br>
+    <p class="warning-text">
+      この端末に関する情報が<br>
+      取得された可能性があります。<br>
+      以下の内容を確認してください。
+    </p>
 
-      ただちに内容を確認してください。
-    </div>
+    <div class="card">
 
-    <div class="info">
-
-      <div class="info-title">
-        ▼ 情報取得レポート（演出）
+      <div class="card-title">
+        INFORMATION REPORT
       </div>
 
       <div class="info-row">
         <span>端末情報</span>
-        <span class="fake">取得済み！</span>
+        <span class="status">取得済み</span>
       </div>
 
       <div class="info-row">
         <span>位置情報</span>
-        <span class="fake">取得済み！</span>
+        <span class="status">取得済み</span>
       </div>
 
       <div class="info-row">
         <span>閲覧情報</span>
-        <span class="fake">取得済み！</span>
+        <span class="status">取得済み</span>
       </div>
 
       <div class="info-row">
         <span>個人情報</span>
-        <span class="fake">確認が必要！</span>
+        <span class="status">確認が必要</span>
       </div>
 
     </div>
 
-    <button onclick="showLesson()">
-      取得された情報を確認する
+    <button class="primary" onclick="showLesson()">
+      詳細を確認する
     </button>
 
-    <div class="sub">
-      SECURITY WARNING
-    </div>
+    <button class="secondary" onclick="showLesson()">
+      閉じる
+    </button>
 
+  </div>
+
+  <div class="footer">
+    Network Security Notice
   </div>
 
 </div>
 
 
-<!-- 学習用の解説画面 -->
-
+<!-- 解説画面 -->
 <div class="container hidden" id="lesson">
 
   <div class="lesson">
 
-    <h2>これは学習用の体験でした！</h2>
+    <div class="lesson-icon">✓</div>
 
-    <div class="safe">
+    <h2>
+      実は、これは<br>
+      体験用の画面でした。
+    </h2>
+
+    <div class="safe-card">
       <strong>安心してください。</strong><br>
-      実際には、あなたの個人情報は
-      取得されていません。
+      本当に情報が盗まれたわけではありません。
+      このページは、情報を収集・保存・送信していません。
+      位置情報やパスワードも取得していません。
     </div>
 
-    <h3>何が起きたのでしょう？</h3>
+    <h3>なぜこのような画面が出たの？</h3>
 
     <p>
-      今の画面は、詐欺サイトなどで使われる
-      「あなたの情報を取得した」という
-      不安をあおる表示を再現したものです。
+      詐欺サイトなどでは、
+      「あなたの情報を取得しました」
+      「今すぐ確認してください」
+      と表示して、不安にさせることがあります。
     </p>
 
-    <p>
-      実際には、このページは個人情報を
-      収集・保存・送信していません。
-      位置情報やパスワードも取得していません。
-    </p>
-
-    <h3>こんな表示が出たらどうする？</h3>
+    <h3>こんなときはどうする？</h3>
 
     <ul>
       <li>あわててボタンを押さない。</li>
@@ -281,24 +357,24 @@ footer {
       <li>先生や家の人に相談する。</li>
     </ul>
 
-    <div class="safe">
-      <strong>今日の大切なポイント</strong><br>
-      「あなたの情報が盗まれた！」
-      「今すぐ対応してください！」という
-      表示を見ても、あわてずに確認しよう。
+    <div class="point">
+      <strong>今日のポイント</strong><br>
+      怖い表示が出ても、すぐに信じないこと。
+      落ち着いて確認することが大切です。
     </div>
 
-    <button onclick="location.reload()">
+    <button class="primary" onclick="location.reload()">
       もう一度体験する
     </button>
 
   </div>
 
+  <div class="footer">
+    情報セキュリティ学習
+  </div>
+
 </div>
 
-<footer>
-  情報セキュリティ学習用シミュレーション
-</footer>
 
 <script>
 function showLesson() {
