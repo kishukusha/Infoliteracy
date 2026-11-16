@@ -4,552 +4,414 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f5f5f7">
 <title>寄宿舎 FREE Wi-Fi</title>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    "Yu Gothic", Meiryo, sans-serif;
-  background: #f5f5f7;
-  color: #1d1d1f;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+                 "Yu Gothic", sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-  width: 100%;
-  max-width: 460px;
-  background: white;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 12px 45px rgba(0,0,0,.08);
+    width: 100%;
+    max-width: 430px;
 }
 
-.header {
-  text-align: center;
-  padding: 35px 24px 25px;
+.screen {
+    display: none;
 }
 
-.wifi-icon {
-  width: 78px;
-  height: 78px;
-  margin: 0 auto 18px;
-  border-radius: 23px;
-  background: #007aff;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
+.screen.active {
+    display: block;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 30px 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 15px;
 }
 
 h1 {
-  font-size: 27px;
-  margin: 0 0 8px;
-}
-
-.subtitle {
-  color: #86868b;
-  font-size: 14px;
-}
-
-.content {
-  padding: 20px 25px 30px;
-}
-
-.network {
-  background: #f5f5f7;
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 22px;
-}
-
-.network-title {
-  font-size: 13px;
-  color: #86868b;
-  margin-bottom: 12px;
-}
-
-.network-name {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 17px;
-  font-weight: 650;
-}
-
-.connected {
-  color: #34c759;
-  font-size: 13px;
-  font-weight: 600;
+    font-size: 25px;
+    margin: 10px 0;
+    font-weight: 700;
 }
 
 .description {
-  text-align: center;
-  color: #6e6e73;
-  font-size: 15px;
-  line-height: 1.8;
-  margin: 20px 0 25px;
+    color: #6e6e73;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 18px 0 25px;
+}
+
+.wifi-name {
+    background: #f5f5f7;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 22px 0;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 button {
-  width: 100%;
-  border: none;
-  border-radius: 14px;
-  padding: 17px;
-  font-size: 17px;
-  font-weight: 650;
-  cursor: pointer;
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
 }
 
 .primary {
-  background: #007aff;
-  color: white;
-}
-
-.primary:hover {
-  background: #0066d6;
+    background: #007aff;
+    color: white;
 }
 
 .secondary {
-  background: #f5f5f7;
-  color: #007aff;
-  margin-top: 12px;
+    background: #e5e5ea;
+    color: #1d1d1f;
 }
 
 button:focus-visible {
-  outline: 4px solid #ffbf47;
-  outline-offset: 3px;
-}
-
-.hidden {
-  display: none;
+    outline: 3px solid #1d1d1f;
+    outline-offset: 3px;
 }
 
 /* 警告画面 */
 
-#warning {
-  border: 2px solid #ff3b30;
-  animation: warningGlow 1.5s ease-in-out 3;
+.warning-card {
+    border: 3px solid #ff3b30;
+    animation: warningGlow 1.5s ease-in-out 3;
 }
 
-#warning .header {
-  background: #fff5f5;
+.security-label {
+    color: #ff3b30;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
 }
 
-#warning .wifi-icon {
-  background: #ff3b30;
-  animation: warningPulse 1s ease-in-out 3;
-}
-
-.warning-label {
-  color: #ff3b30;
-  font-size: 13px;
-  font-weight: 800;
-  text-align: center;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+.warning-icon {
+    font-size: 65px;
+    animation: warningPulse 1s ease-in-out 3;
 }
 
 .warning-title {
-  color: #ff3b30;
-  font-size: 29px;
-  font-weight: 800;
-  text-align: center;
-  line-height: 1.5;
-  margin: 0 0 18px;
-  animation: warningBlink 1s ease-in-out 5;
+    color: #ff3b30;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.5;
+    animation: warningBlink 1s ease-in-out 5;
 }
 
 .warning-text {
-  color: #6e6e73;
-  text-align: center;
-  line-height: 1.8;
+    color: #444;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 18px 0;
 }
 
-.card {
-  background: #f5f5f7;
-  border-radius: 16px;
-  padding: 18px;
-  margin: 22px 0;
+.report {
+    text-align: left;
+    background: #fff1f0;
+    border-radius: 14px;
+    padding: 15px;
+    margin: 20px 0;
 }
 
-.card-title {
-  color: #86868b;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 10px;
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #ffd6d2;
+    font-size: 14px;
 }
 
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 13px 0;
-  border-bottom: 1px solid #e5e5ea;
-  font-size: 14px;
-}
-
-.info-row:last-child {
-  border-bottom: none;
+.report-row:last-child {
+    border-bottom: none;
 }
 
 .status {
-  color: #ff3b30;
-  font-weight: 700;
+    color: #ff3b30;
+    font-weight: 700;
 }
 
-/* 警告アニメーション */
-
 @keyframes warningBlink {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 5px rgba(255,59,48,.2);
-  }
-
-  50% {
-    opacity: .45;
-    text-shadow: 0 0 20px rgba(255,0,0,.8);
-  }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
 }
 
 @keyframes warningGlow {
-  0%, 100% {
-    box-shadow: 0 12px 35px rgba(255,59,48,.08);
-  }
-
-  50% {
-    box-shadow: 0 0 30px rgba(255,59,48,.35);
-  }
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255,59,48,0);
+    }
+    50% {
+        box-shadow: 0 0 28px rgba(255,59,48,0.45);
+    }
 }
 
 @keyframes warningPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
 }
 
 /* 解説画面 */
 
-.lesson {
-  padding: 30px 25px;
-}
-
 .lesson-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #e8f8ed;
-  color: #34c759;
-  font-size: 37px;
+    font-size: 55px;
+    margin-bottom: 15px;
 }
 
-.lesson h2 {
-  font-size: 25px;
-  text-align: center;
-  line-height: 1.5;
+.lesson-box {
+    text-align: left;
+    background: #f5f5f7;
+    border-radius: 15px;
+    padding: 17px;
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.8;
 }
 
-.safe {
-  background: #e8f8ed;
-  border-radius: 16px;
-  padding: 18px;
-  color: #176b35;
-  line-height: 1.8;
-  margin: 20px 0;
+.lesson-box h2 {
+    font-size: 17px;
+    margin-top: 0;
 }
 
-.lesson p,
-.lesson li {
-  color: #515154;
-  font-size: 15px;
-  line-height: 1.9;
+.lesson-box ul {
+    padding-left: 22px;
+    margin-bottom: 0;
 }
 
-.lesson li {
-  margin-bottom: 8px;
-}
-
-.point {
-  background: #f5f5f7;
-  border-radius: 16px;
-  padding: 18px;
-  line-height: 1.8;
-  margin: 22px 0;
-}
-
-.footer {
-  text-align: center;
-  color: #aeaeb2;
-  font-size: 12px;
-  padding: 0 15px 20px;
-}
-
-@media (max-width: 380px) {
-  .warning-title {
-    font-size: 25px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
+.notice {
+    background: #e8f4ff;
+    color: #0055a4;
+    border-radius: 14px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: left;
+    margin-top: 18px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #warning,
-  .warning-title,
-  #warning .wifi-icon {
-    animation: none;
-  }
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 接続画面 -->
+<div class="container">
 
-<div class="container" id="connect">
+    <!-- 最初に表示するWi-Fi接続画面 -->
+    <section id="connect" class="screen active">
+        <div class="card">
 
-  <div class="header">
+            <div class="logo">📶</div>
 
-    <div class="wifi-icon">⌁</div>
+            <h1>寄宿舎 FREE Wi-Fi</h1>
 
-    <h1>寄宿舎 FREE Wi-Fi</h1>
+            <p class="description">
+                無料でインターネットに接続できます。<br>
+                下のボタンを押して接続してください。
+            </p>
 
-    <div class="subtitle">
-      Wireless Network
-    </div>
+            <div class="wifi-name">
+                📶 寄宿舎 FREE Wi-Fi
+                <div style="font-size:13px;color:#6e6e73;font-weight:400;margin-top:8px;">
+                    セキュリティ保護なし
+                </div>
+            </div>
 
-  </div>
+            <button class="primary" onclick="showWarning()">
+                接続する
+            </button>
 
-  <div class="content">
+            <button class="secondary" onclick="showCancel()">
+                キャンセル
+            </button>
 
-    <div class="network">
+            <p style="font-size:12px;color:#8e8e93;margin-top:25px;">
+                FREE Wi-Fi サービス
+            </p>
 
-      <div class="network-title">
-        利用可能なネットワーク
-      </div>
-
-      <div class="network-name">
-        <span>📶 寄宿舎 FREE Wi-Fi</span>
-        <span class="connected">●</span>
-      </div>
-
-    </div>
-
-    <p class="description">
-      無料Wi-Fiをご利用いただけます。<br>
-      インターネットに接続するには<br>
-      下のボタンを押してください。
-    </p>
-
-    <button class="primary" onclick="showWarning()">
-      接続する
-    </button>
-
-    <button class="secondary" onclick="showCancel()">
-      キャンセル
-    </button>
-
-  </div>
-
-  <div class="footer">
-    Wi-Fi Network Service
-  </div>
-
-</div>
+        </div>
+    </section>
 
 
-<!-- 警告画面 -->
+    <!-- 警告画面 -->
+    <section id="warning" class="screen">
+        <div class="card warning-card">
 
-<div class="container hidden" id="warning">
+            <div class="security-label">SECURITY ALERT</div>
 
-  <div class="header">
+            <div class="warning-icon">⚠️</div>
 
-    <div class="wifi-icon">⚠</div>
+            <div class="warning-title">
+                あなたの情報を<br>
+                取得しました！
+            </div>
 
-    <div class="warning-label">
-      SECURITY ALERT
-    </div>
+            <p class="warning-text">
+                この端末から情報が取得された可能性があります。
+            </p>
 
-    <h1>セキュリティ警告</h1>
+            <div class="report">
 
-  </div>
+                <div class="report-row">
+                    <span>端末情報</span>
+                    <span class="status">取得済み</span>
+                </div>
 
-  <div class="content">
+                <div class="report-row">
+                    <span>位置情報</span>
+                    <span class="status">取得済み</span>
+                </div>
 
-    <h2 class="warning-title">
-      ⚠ あなたの情報を<br>
-      取得しました！
-    </h2>
+                <div class="report-row">
+                    <span>閲覧情報</span>
+                    <span class="status">取得済み</span>
+                </div>
 
-    <p class="warning-text">
-      不正なネットワーク接続を検知しました。<br>
-      端末情報の取得処理が完了しました。
-    </p>
+                <div class="report-row">
+                    <span>個人情報</span>
+                    <span class="status">確認が必要</span>
+                </div>
 
-    <div class="card">
+            </div>
 
-      <div class="card-title">
-        INFORMATION REPORT
-      </div>
+            <p style="font-size:13px;color:#777;">
+                ※これは情報モラル学習のための演出です。
+            </p>
 
-      <div class="info-row">
-        <span>端末情報</span>
-        <span class="status">取得済み</span>
-      </div>
+            <button class="primary" onclick="showLesson()">
+                詳細を確認する
+            </button>
 
-      <div class="info-row">
-        <span>位置情報</span>
-        <span class="status">取得済み</span>
-      </div>
-
-      <div class="info-row">
-        <span>閲覧情報</span>
-        <span class="status">取得済み</span>
-      </div>
-
-      <div class="info-row">
-        <span>個人情報</span>
-        <span class="status">確認が必要</span>
-      </div>
-
-    </div>
-
-    <button class="primary" onclick="showLesson()">
-      詳細を確認する
-    </button>
-
-  </div>
-
-</div>
+        </div>
+    </section>
 
 
-<!-- 学習解説画面 -->
+    <!-- 解説画面 -->
+    <section id="lesson" class="screen">
+        <div class="card">
 
-<div class="container hidden" id="lesson">
+            <div class="lesson-icon">🛡️</div>
 
-  <div class="lesson">
+            <h1>これは学習用の画面です</h1>
 
-    <div class="lesson-icon">✓</div>
+            <p class="description">
+                びっくりしたかな？<br>
+                安心してください。
+            </p>
 
-    <h2>
-      実は、これは<br>
-      体験用の画面でした。
-    </h2>
+            <div class="notice">
+                <strong>実際には情報を取得していません。</strong><br><br>
+                このページでは、位置情報・パスワード・個人情報などを取得、保存、送信していません。
+            </div>
 
-    <div class="safe">
-      <strong>安心してください。</strong><br>
-      本当に情報が盗まれたわけではありません。
-      このページは情報を収集・保存・送信していません。
-      位置情報やパスワードも取得していません。
-    </div>
+            <div class="lesson-box">
+                <h2>なぜこんな画面が出たの？</h2>
+                本物の詐欺サイトや偽のWi-Fiでは、次のような言葉で不安にさせることがあります。
 
-    <h3>なぜこのような画面が出たの？</h3>
+                <ul>
+                    <li>あなたの情報が盗まれました</li>
+                    <li>ウイルスに感染しました</li>
+                    <li>今すぐボタンを押してください</li>
+                    <li>パスワードを入力してください</li>
+                </ul>
+            </div>
 
-    <p>
-      詐欺サイトなどでは、
-      「あなたの情報を取得しました」
-      「今すぐ確認してください」
-      と表示して、不安にさせることがあります。
-    </p>
+            <div class="lesson-box">
+                <h2>こんなときはどうする？</h2>
+                <ul>
+                    <li>知らないWi-Fiには接続しない</li>
+                    <li>怪しい画面のボタンを押さない</li>
+                    <li>名前やパスワードを入力しない</li>
+                    <li>困ったら先生や職員に相談する</li>
+                </ul>
+            </div>
 
-    <h3>こんなときはどうする？</h3>
+            <button class="primary" onclick="showScreen('connect')">
+                最初の画面に戻る
+            </button>
 
-    <ul>
-      <li>あわててボタンを押さない。</li>
-      <li>名前やパスワードを入力しない。</li>
-      <li>先生や家の人に相談する。</li>
-    </ul>
-
-    <div class="point">
-      <strong>今日のポイント</strong><br>
-      怖い表示が出ても、すぐに信じないこと。
-      落ち着いて確認することが大切です。
-    </div>
-
-    <button class="primary" onclick="location.reload()">
-      もう一度体験する
-    </button>
-
-  </div>
-
-</div>
+        </div>
+    </section>
 
 
-<!-- キャンセル画面 -->
+    <!-- キャンセル画面 -->
+    <section id="cancel" class="screen">
+        <div class="card">
 
-<div class="container hidden" id="cancel">
+            <div class="lesson-icon">👋</div>
 
-  <div class="lesson">
+            <h1>接続をキャンセルしました</h1>
 
-    <h2>接続をキャンセルしました</h2>
+            <p class="description">
+                Wi-Fiへの接続は行っていません。<br>
+                必要なときは先生や職員に確認しましょう。
+            </p>
 
-    <p>
-      知らないWi-Fiにすぐ接続しないことは、
-      自分の情報を守るための大切な行動です。
-    </p>
+            <button class="primary" onclick="showScreen('connect')">
+                戻る
+            </button>
 
-    <button class="primary" onclick="location.reload()">
-      最初に戻る
-    </button>
-
-  </div>
+        </div>
+    </section>
 
 </div>
 
 
 <script>
-function showScreen(id) {
+function showScreen(screenId) {
 
-  const screens = [
-    "connect",
-    "warning",
-    "lesson",
-    "cancel"
-  ];
+    document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+    });
 
-  screens.forEach(function(screen) {
+    document.getElementById(screenId).classList.add("active");
 
-    document.getElementById(screen)
-      .classList.toggle("hidden", screen !== id);
-
-  });
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    window.scrollTo(0, 0);
 }
 
 function showWarning() {
-  showScreen("warning");
+    showScreen("warning");
 }
 
 function showLesson() {
-  showScreen("lesson");
+    showScreen("lesson");
 }
 
 function showCancel() {
-  showScreen("cancel");
+    showScreen("cancel");
 }
 </script>
 
