@@ -14,7 +14,7 @@
 
 body {
   margin: 0;
-  padding: 24px 16px;
+  padding: 20px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@ body {
 .container {
   width: 100%;
   max-width: 460px;
-  background: rgba(255,255,255,.92);
+  background: white;
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 12px 45px rgba(0,0,0,.08);
@@ -37,101 +37,71 @@ body {
 .header {
   text-align: center;
   padding: 35px 24px 25px;
-  background: #fff;
 }
 
 .wifi-icon {
-  width: 76px;
-  height: 76px;
-  margin: 0 auto 16px;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 18px;
   border-radius: 23px;
   background: #007aff;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 43px;
+  font-size: 45px;
 }
 
-.header h1 {
+h1 {
   font-size: 27px;
-  font-weight: 700;
-  letter-spacing: -.7px;
   margin: 0 0 8px;
 }
 
-.header p {
+.subtitle {
   color: #86868b;
   font-size: 14px;
-  margin: 0;
 }
 
 .content {
-  padding: 25px 24px 30px;
+  padding: 20px 25px 30px;
 }
 
-.warning-label {
-  color: #ff3b30;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-}
-
-.warning-title {
-  font-size: 29px;
-  font-weight: 750;
-  text-align: center;
-  line-height: 1.45;
-  letter-spacing: -.8px;
-  margin: 0 0 18px;
-}
-
-.warning-text {
-  color: #6e6e73;
-  font-size: 15px;
-  text-align: center;
-  line-height: 1.8;
-  margin-bottom: 25px;
-}
-
-.card {
+.network {
   background: #f5f5f7;
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 18px;
   margin-bottom: 22px;
 }
 
-.card-title {
+.network-title {
   font-size: 13px;
-  font-weight: 700;
   color: #86868b;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.info-row {
+.network-name {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding: 13px 0;
-  border-bottom: 1px solid #e5e5ea;
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: 650;
 }
 
-.info-row:last-child {
-  border-bottom: none;
+.connected {
+  color: #34c759;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.status {
-  color: #ff3b30;
-  font-weight: 700;
-  white-space: nowrap;
+.description {
+  text-align: center;
+  color: #6e6e73;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 20px 0 25px;
 }
 
 button {
-  display: block;
   width: 100%;
   border: none;
   border-radius: 14px;
@@ -139,7 +109,6 @@ button {
   font-size: 17px;
   font-weight: 650;
   cursor: pointer;
-  transition: .2s;
 }
 
 .primary {
@@ -166,8 +135,63 @@ button:focus-visible {
   display: none;
 }
 
+.warning-label {
+  color: #ff3b30;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.warning-title {
+  font-size: 29px;
+  font-weight: 750;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+.warning-text {
+  color: #6e6e73;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.card {
+  background: #f5f5f7;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 22px 0;
+}
+
+.card-title {
+  color: #86868b;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e5ea;
+  font-size: 14px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.status {
+  color: #ff3b30;
+  font-weight: 700;
+}
+
 .lesson {
-  padding: 32px 25px;
+  padding: 30px 25px;
 }
 
 .lesson-icon {
@@ -187,22 +211,15 @@ button:focus-visible {
   font-size: 25px;
   text-align: center;
   line-height: 1.5;
-  margin: 0 0 22px;
 }
 
-.safe-card {
+.safe {
   background: #e8f8ed;
   border-radius: 16px;
   padding: 18px;
   color: #176b35;
   line-height: 1.8;
-  font-size: 15px;
-  margin-bottom: 24px;
-}
-
-.lesson h3 {
-  font-size: 17px;
-  margin: 24px 0 12px;
+  margin: 20px 0;
 }
 
 .lesson p,
@@ -212,12 +229,8 @@ button:focus-visible {
   line-height: 1.9;
 }
 
-.lesson ul {
-  padding-left: 22px;
-}
-
 .lesson li {
-  margin-bottom: 9px;
+  margin-bottom: 8px;
 }
 
 .point {
@@ -225,7 +238,6 @@ button:focus-visible {
   border-radius: 16px;
   padding: 18px;
   line-height: 1.8;
-  font-size: 15px;
   margin: 22px 0;
 }
 
@@ -235,34 +247,79 @@ button:focus-visible {
   font-size: 12px;
   padding: 0 15px 20px;
 }
-
-@media (max-width: 380px) {
-  .warning-title {
-    font-size: 25px;
-  }
-  .header h1 {
-    font-size: 24px;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- 警告画面 -->
-<div class="container" id="warning">
+<!-- 接続画面 -->
+<div class="container" id="connect">
 
   <div class="header">
+
     <div class="wifi-icon">⌁</div>
+
     <h1>寄宿舎 FREE Wi-Fi</h1>
-    <p>Wireless Network Service</p>
+
+    <div class="subtitle">
+      Wireless Network
+    </div>
+
   </div>
 
   <div class="content">
 
+    <div class="network">
+
+      <div class="network-title">
+        利用可能なネットワーク
+      </div>
+
+      <div class="network-name">
+        <span>📶 寄宿舎 FREE Wi-Fi</span>
+        <span class="connected">●</span>
+      </div>
+
+    </div>
+
+    <p class="description">
+      無料Wi-Fiをご利用いただけます。<br>
+      インターネットに接続するには<br>
+      下のボタンを押してください。
+    </p>
+
+    <button class="primary" onclick="showWarning()">
+      接続する
+    </button>
+
+    <button class="secondary" onclick="showCancel()">
+      キャンセル
+    </button>
+
+  </div>
+
+  <div class="footer">
+    Wi-Fi Network Service
+  </div>
+
+</div>
+
+
+<!-- 情報取得の警告画面 -->
+<div class="container hidden" id="warning">
+
+  <div class="header">
+    <div class="wifi-icon"
+         style="background:#ff3b30;">!</div>
+
     <div class="warning-label">
       SECURITY ALERT
     </div>
+
+    <h1>警告</h1>
+  </div>
+
+  <div class="content">
 
     <h2 class="warning-title">
       あなたの情報を<br>
@@ -271,8 +328,7 @@ button:focus-visible {
 
     <p class="warning-text">
       この端末に関する情報が<br>
-      取得された可能性があります。<br>
-      以下の内容を確認してください。
+      取得された可能性があります。
     </p>
 
     <div class="card">
@@ -307,20 +363,12 @@ button:focus-visible {
       詳細を確認する
     </button>
 
-    <button class="secondary" onclick="showLesson()">
-      閉じる
-    </button>
-
-  </div>
-
-  <div class="footer">
-    Network Security Notice
   </div>
 
 </div>
 
 
-<!-- 解説画面 -->
+<!-- 学習解説画面 -->
 <div class="container hidden" id="lesson">
 
   <div class="lesson">
@@ -332,10 +380,10 @@ button:focus-visible {
       体験用の画面でした。
     </h2>
 
-    <div class="safe-card">
+    <div class="safe">
       <strong>安心してください。</strong><br>
       本当に情報が盗まれたわけではありません。
-      このページは、情報を収集・保存・送信していません。
+      このページは情報を収集・保存・送信していません。
       位置情報やパスワードも取得していません。
     </div>
 
@@ -353,7 +401,6 @@ button:focus-visible {
     <ul>
       <li>あわててボタンを押さない。</li>
       <li>名前やパスワードを入力しない。</li>
-      <li>お金を払ったり、電話をかけたりしない。</li>
       <li>先生や家の人に相談する。</li>
     </ul>
 
@@ -369,22 +416,57 @@ button:focus-visible {
 
   </div>
 
-  <div class="footer">
-    情報セキュリティ学習
+</div>
+
+
+<!-- キャンセル画面 -->
+<div class="container hidden" id="cancel">
+
+  <div class="lesson">
+
+    <h2>接続をキャンセルしました</h2>
+
+    <p>
+      知らないWi-Fiにすぐ接続しないことは、
+      自分の情報を守るための大切な行動です。
+    </p>
+
+    <button class="primary" onclick="location.reload()">
+      最初に戻る
+    </button>
+
   </div>
 
 </div>
 
 
 <script>
-function showLesson() {
-  document.getElementById("warning").classList.add("hidden");
-  document.getElementById("lesson").classList.remove("hidden");
+function showScreen(id) {
+  const screens = [
+    "connect",
+    "warning",
+    "lesson",
+    "cancel"
+  ];
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  screens.forEach(function(screen) {
+    document.getElementById(screen)
+      .classList.toggle("hidden", screen !== id);
   });
+
+  window.scrollTo(0, 0);
+}
+
+function showWarning() {
+  showScreen("warning");
+}
+
+function showLesson() {
+  showScreen("lesson");
+}
+
+function showCancel() {
+  showScreen("cancel");
 }
 </script>
 
