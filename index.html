@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>無料Wi-Fi セキュリティ体験</title>
+<title>セキュリティ警告</title>
 
 <style>
 * {
@@ -13,325 +13,302 @@
 
 body {
   margin: 0;
-  padding: 20px;
+  padding: 15px;
   min-height: 100vh;
+  font-family: "Yu Gothic", Meiryo, sans-serif;
+  background: #171717;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Yu Gothic", Meiryo, sans-serif;
-  background: #eaf1f6;
-  color: #222;
 }
 
 .container {
   width: 100%;
   max-width: 520px;
-  background: white;
-  border-radius: 20px;
+  background: #262626;
+  border: 2px solid #ef4444;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 5px 25px #0002;
+  box-shadow: 0 0 30px #ef444466;
 }
 
-header {
-  background: #075985;
-  color: white;
+.top {
+  background: #991b1b;
+  padding: 25px 15px;
   text-align: center;
-  padding: 30px 20px;
 }
 
-.wifi {
-  font-size: 60px;
+.warning-icon {
+  font-size: 65px;
 }
 
-header h1 {
+.top h1 {
+  font-size: 30px;
   margin: 10px 0;
-  font-size: 34px;
+  color: white;
 }
 
-header p {
+.top p {
   margin: 0;
+  font-size: 16px;
 }
 
 .content {
   padding: 25px;
 }
 
-.notice {
-  background: #e0f2fe;
-  padding: 15px;
-  border-radius: 10px;
-  line-height: 1.7;
-}
-
-.question {
-  font-size: 21px;
+.alert {
+  color: #fca5a5;
+  font-size: 23px;
   font-weight: bold;
   text-align: center;
-  margin: 25px 0 15px;
+  margin-bottom: 20px;
+}
+
+.message {
+  background: #450a0a;
+  border: 1px solid #ef4444;
+  padding: 17px;
+  border-radius: 10px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.info {
+  margin-top: 20px;
+  background: #171717;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.info-title {
+  color: #f87171;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #444;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.fake {
+  color: #fca5a5;
+  font-weight: bold;
 }
 
 button {
   width: 100%;
   padding: 17px;
-  margin-top: 12px;
+  margin-top: 18px;
   border: none;
-  border-radius: 12px;
-  background: #0284c7;
+  border-radius: 10px;
+  background: #dc2626;
   color: white;
   font-size: 19px;
   font-weight: bold;
   cursor: pointer;
 }
 
-button.secondary {
-  background: #e2e8f0;
-  color: #222;
+button:hover {
+  background: #b91c1c;
 }
 
 button:focus-visible {
-  outline: 4px solid orange;
+  outline: 4px solid #facc15;
+  outline-offset: 3px;
+}
+
+.sub {
+  color: #aaa;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 18px;
 }
 
 .hidden {
   display: none;
 }
 
-.alarm {
-  background: #b91c1c;
-  color: white;
+.lesson {
+  background: white;
+  color: #222;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.lesson h2 {
+  color: #15803d;
+  font-size: 25px;
   text-align: center;
-  padding: 35px 20px;
 }
 
-.alarm .icon {
-  font-size: 65px;
-}
-
-.alarm h2 {
-  font-size: 34px;
-  margin: 10px 0;
-}
-
-.alarm p {
-  font-size: 19px;
-  line-height: 1.7;
+.lesson p,
+.lesson li {
+  line-height: 1.8;
 }
 
 .safe {
   background: #dcfce7;
   border: 1px solid #86efac;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 15px;
+  border-radius: 10px;
   line-height: 1.8;
 }
 
-.explain h2 {
-  font-size: 26px;
-}
-
-.explain li {
-  margin: 12px 0;
-  line-height: 1.7;
-}
-
-.small {
-  color: #64748b;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-top: 20px;
+.lesson button {
+  background: #15803d;
 }
 
 footer {
   text-align: center;
-  padding: 15px;
-  color: #64748b;
-  font-size: 12px;
+  color: #888;
+  font-size: 11px;
+  padding: 12px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="warning">
 
-<header>
-  <div class="wifi">📶</div>
-  <h1>FREE Wi-Fi</h1>
-  <p>無料インターネット接続スポット</p>
-</header>
-
-<!-- 最初の画面 -->
-<div id="start" class="content">
-
-  <div class="notice">
-    <strong>お知らせ</strong><br>
-    この場所では無料Wi-Fiを利用できます。
-    接続するには下のボタンを押してください。
-  </div>
-
-  <div class="question">
-    無料Wi-Fiに接続しますか？
-  </div>
-
-  <button onclick="showAlarm()">
-    接続する
-  </button>
-
-  <button class="secondary" onclick="showCancel()">
-    接続しない
-  </button>
-
-  <p class="small">
-    ※情報セキュリティを学ぶための体験ページです。
-    実際のWi-Fiには接続しません。
-  </p>
-
-</div>
-
-<!-- 警告画面 -->
-<div id="alarm" class="hidden">
-
-  <div class="alarm">
-    <div class="icon">⚠️</div>
-
-    <h2>
-      あなたの情報が<br>
-      ぬすまれた！？
-    </h2>
-
-    <p>
-      ちょっと待って！<br>
-      知らないWi-Fiに接続すると、
-      危険なことがあるよ。
-    </p>
+  <div class="top">
+    <div class="warning-icon">⚠️</div>
+    <h1>警告！</h1>
+    <p>セキュリティに関する重要なお知らせ</p>
   </div>
 
   <div class="content">
-    <button onclick="showExplain()">
-      どういうこと？
+
+    <div class="alert">
+      あなたの情報を<br>
+      取得しました！
+    </div>
+
+    <div class="message">
+      このページにアクセスしたことで、
+      あなたの端末に関する情報が
+      取得された可能性があります。<br><br>
+
+      ただちに内容を確認してください。
+    </div>
+
+    <div class="info">
+
+      <div class="info-title">
+        ▼ 情報取得レポート（演出）
+      </div>
+
+      <div class="info-row">
+        <span>端末情報</span>
+        <span class="fake">取得済み！</span>
+      </div>
+
+      <div class="info-row">
+        <span>位置情報</span>
+        <span class="fake">取得済み！</span>
+      </div>
+
+      <div class="info-row">
+        <span>閲覧情報</span>
+        <span class="fake">取得済み！</span>
+      </div>
+
+      <div class="info-row">
+        <span>個人情報</span>
+        <span class="fake">確認が必要！</span>
+      </div>
+
+    </div>
+
+    <button onclick="showLesson()">
+      取得された情報を確認する
     </button>
+
+    <div class="sub">
+      SECURITY WARNING
+    </div>
+
   </div>
 
 </div>
 
-<!-- 解説画面 -->
-<div id="explain" class="content hidden">
 
-  <h2>これは学習用の体験です</h2>
+<!-- 学習用の解説画面 -->
 
-  <div class="safe">
-    <strong>安心してください。</strong><br>
-    本当に情報が盗まれたわけではありません。
-    このページは練習用です。
-    個人情報の入力・収集・送信は一切していません。
+<div class="container hidden" id="lesson">
+
+  <div class="lesson">
+
+    <h2>これは学習用の体験でした！</h2>
+
+    <div class="safe">
+      <strong>安心してください。</strong><br>
+      実際には、あなたの個人情報は
+      取得されていません。
+    </div>
+
+    <h3>何が起きたのでしょう？</h3>
+
+    <p>
+      今の画面は、詐欺サイトなどで使われる
+      「あなたの情報を取得した」という
+      不安をあおる表示を再現したものです。
+    </p>
+
+    <p>
+      実際には、このページは個人情報を
+      収集・保存・送信していません。
+      位置情報やパスワードも取得していません。
+    </p>
+
+    <h3>こんな表示が出たらどうする？</h3>
+
+    <ul>
+      <li>あわててボタンを押さない。</li>
+      <li>名前やパスワードを入力しない。</li>
+      <li>お金を払ったり、電話をかけたりしない。</li>
+      <li>先生や家の人に相談する。</li>
+    </ul>
+
+    <div class="safe">
+      <strong>今日の大切なポイント</strong><br>
+      「あなたの情報が盗まれた！」
+      「今すぐ対応してください！」という
+      表示を見ても、あわてずに確認しよう。
+    </div>
+
+    <button onclick="location.reload()">
+      もう一度体験する
+    </button>
+
   </div>
-
-  <h3>どんなことに気をつければいい？</h3>
-
-  <ul>
-    <li>誰が用意したWi-Fiなのか確認する。</li>
-    <li>知らない画面に名前やパスワードを入力しない。</li>
-    <li>不安なときは接続せず、先生や家の人に相談する。</li>
-  </ul>
-
-  <div class="question">
-    クイズ：知らない無料Wi-Fiがあったら？
-  </div>
-
-  <button onclick="showResult()">
-    すぐに接続する
-  </button>
-
-  <button class="secondary" onclick="showResult()">
-    確認してから使う・迷ったら相談する
-  </button>
-
-</div>
-
-<!-- 結果画面 -->
-<div id="result" class="content hidden">
-
-  <h2>正解は「確認してから使う」</h2>
-
-  <p>
-    無料だからといって、すぐに接続するのは
-    危険な場合があります。
-  </p>
-
-  <div class="safe">
-    <strong>今日のポイント</strong><br>
-    「無料」「便利」だけで決めず、
-    安全かどうかを確かめよう。
-  </div>
-
-  <button onclick="restart()">
-    もう一度体験する
-  </button>
-
-</div>
-
-<!-- 接続しない画面 -->
-<div id="cancel" class="content hidden">
-
-  <h2>接続しないを選べました</h2>
-
-  <p>
-    知らないWi-Fiにすぐ接続しないのは、
-    安全を守る大切な行動です。
-  </p>
-
-  <button onclick="showAlarm()">
-    接続したらどうなる？
-  </button>
-
-  <button class="secondary" onclick="restart()">
-    最初に戻る
-  </button>
 
 </div>
 
 <footer>
-  情報セキュリティ学習用・シミュレーション
+  情報セキュリティ学習用シミュレーション
 </footer>
 
-</div>
-
 <script>
-function show(id) {
-  const screens = [
-    "start",
-    "alarm",
-    "explain",
-    "result",
-    "cancel"
-  ];
+function showLesson() {
+  document.getElementById("warning").classList.add("hidden");
+  document.getElementById("lesson").classList.remove("hidden");
 
-  screens.forEach(function(screen) {
-    document.getElementById(screen)
-      .classList.toggle("hidden", screen !== id);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
-
-  window.scrollTo(0, 0);
-}
-
-function showAlarm() {
-  show("alarm");
-}
-
-function showExplain() {
-  show("explain");
-}
-
-function showResult() {
-  show("result");
-}
-
-function showCancel() {
-  show("cancel");
-}
-
-function restart() {
-  show("start");
 }
 </script>
 
